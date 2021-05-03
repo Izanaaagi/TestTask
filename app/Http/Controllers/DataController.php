@@ -18,24 +18,26 @@ class DataController extends Controller
 
         $query = (new Data)->newQuery();
         foreach ($request->all() as $key => $value) {
-            switch ($key) {
-                case 'name':
-                    $query->where($key, 'like', "%{$value}%");
-                    break;
-                case 'offset':
-                    $query->where('price', '>', $value);
-                    break;
-                case 'limit':
-                    $query->where('price', '<', $value);
-                    break;
-                default:
-                    $query->where($key, $value);
+            if ($value != null) {
+                switch ($key) {
+                    case 'name':
+                        $query->where($key, 'like', "%{$value}%");
+                        break;
+                    case 'offset':
+                        $query->where('price', '>', $value);
+                        break;
+                    case 'limit':
+                        $query->where('price', '<', $value);
+                        break;
+                    default:
+                        $query->where($key, $value);
+                }
             }
         }
 
         $query = $query->get();
 
-        return response()->json(['input' => $query]);
+        return response()->json($query);
     }
 
 }
