@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('data', DataController::class);
+Route::get('/data', [DataController::class, 'index']);
