@@ -27,7 +27,7 @@
                     <el-button type="primary" @click="getData">Search</el-button>
                 </el-form-item>
             </el-form>
-            <h2 v-if="responseData.length === 0 && !loading">No results :(</h2>
+            <h2 v-if="responseData.length === 0 && !    loading">No results :(</h2>
             <el-table
                 v-loading="loading"
                 v-else
